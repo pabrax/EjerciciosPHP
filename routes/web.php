@@ -14,6 +14,20 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// tareas punto 1
+
+Route::get('/tareas', [App\Http\Controllers\TareasController::class, 'index'])->name('tareas');
+
+Route::post('/tareas', [App\Http\Controllers\TareasController::class, 'store'])->name('tareas.store');
+
+Route::delete('/tareas/{id}', [App\Http\Controllers\TareasController::class, 'destroy'])->name('tareas.destroy');
+
+Route::get('/tareas/{id}/edit', [App\Http\Controllers\TareasController::class, 'edit'])->name('tareas.edit');
+
+Route::put('/tareas/{id}', [App\Http\Controllers\TareasController::class, 'update'])->name('tareas.update');
+
+Route::get('/tareas/create', [App\Http\Controllers\TareasController::class, 'create'])->name('tareas.create');
+
 // propinas punto 2
 Route::get('/propinas', [PropinasController::class, 'index'])->name('propinas');
 
@@ -39,4 +53,3 @@ Route::put('/notas/{id}', [App\Http\Controllers\NotasController::class, 'update'
 Route::get('/notas/create', [App\Http\Controllers\NotasController::class, 'create'])->name('notas.create');
 
 // reservas punto 5
-
