@@ -3,8 +3,13 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TareasController;
 use App\Http\Controllers\PropinasController;
 use App\Http\Controllers\contrasenasController;
+use App\Http\Controllers\NotasController;
+use App\Http\Controllers\CronometroController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -12,21 +17,21 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // tareas punto 1
 
-Route::get('/tareas', [App\Http\Controllers\TareasController::class, 'index'])->name('tareas');
+Route::get('/tareas', [TareasController::class, 'index'])->name('tareas');
 
-Route::post('/tareas', [App\Http\Controllers\TareasController::class, 'store'])->name('tareas.store');
+Route::post('/tareas', [TareasController::class, 'store'])->name('tareas.store');
 
-Route::delete('/tareas/{id}', [App\Http\Controllers\TareasController::class, 'destroy'])->name('tareas.destroy');
+Route::delete('/tareas/{id}', [TareasController::class, 'destroy'])->name('tareas.destroy');
 
-Route::get('/tareas/{id}/edit', [App\Http\Controllers\TareasController::class, 'edit'])->name('tareas.edit');
+Route::get('/tareas/{id}/edit', [TareasController::class, 'edit'])->name('tareas.edit');
 
-Route::put('/tareas/{id}', [App\Http\Controllers\TareasController::class, 'update'])->name('tareas.update');
+Route::put('/tareas/{id}', [TareasController::class, 'update'])->name('tareas.update');
 
-Route::get('/tareas/create', [App\Http\Controllers\TareasController::class, 'create'])->name('tareas.create');
+Route::get('/tareas/create', [TareasController::class, 'create'])->name('tareas.create');
 
 // propinas punto 2
 Route::get('/propinas', [PropinasController::class, 'index'])->name('propinas');
@@ -35,21 +40,25 @@ Route::post('/propinas/calcular', [PropinasController::class, 'calcular'])->name
 
 // contraseñas punto 3
 
-Route::get('/contrasenas', [App\Http\Controllers\contrasenasController::class, 'index'])->name('contrasenas');
-Route::post('/contrasenas/calcular', [App\Http\Controllers\contrasenasController::class, 'calcular'])->name('contrasenas.calcular');
+Route::get('/contrasenas', [contrasenasController::class, 'index'])->name('contrasenas');
 
-// notas punto 4
+Route::post('/contrasenas/calcular', [contrasenasController::class, 'calcular'])->name('contrasenas.calcular');
 
-Route::get('/notas', [App\Http\Controllers\NotasController::class, 'index'])->name('notas');
+// notas punto 6
 
-Route::post('/notas', [App\Http\Controllers\NotasController::class, 'store'])->name('notas.store');
+Route::get('/notas', [NotasController::class, 'index'])->name('notas');
 
-Route::delete('/notas/{id}', [App\Http\Controllers\NotasController::class, 'destroy'])->name('notas.destroy');
+Route::post('/notas', [NotasController::class, 'store'])->name('notas.store');
 
-Route::get('/notas/{id}/edit', [App\Http\Controllers\NotasController::class, 'edit'])->name('notas.edit');
+Route::delete('/notas/{id}', [NotasController::class, 'destroy'])->name('notas.destroy');
 
-Route::put('/notas/{id}', [App\Http\Controllers\NotasController::class, 'update'])->name('notas.update');
+Route::get('/notas/{id}/edit', [NotasController::class, 'edit'])->name('notas.edit');
 
-Route::get('/notas/create', [App\Http\Controllers\NotasController::class, 'create'])->name('notas.create');
+Route::put('/notas/{id}', [NotasController::class, 'update'])->name('notas.update');
 
-// reservas punto 5
+Route::get('/notas/create', [NotasController::class, 'create'])->name('notas.create');
+
+
+// punto 11 cronometro
+
+Route::get('/cronometro', [CronometroController::class, 'index'])->name('cronometro');
