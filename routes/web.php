@@ -9,6 +9,7 @@ use App\Http\Controllers\PropinasController;
 use App\Http\Controllers\contrasenasController;
 use App\Http\Controllers\NotasController;
 use App\Http\Controllers\CronometroController;
+use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\ReservasController;
 use App\Http\Controllers\HabitacionesController;
 
@@ -39,6 +40,15 @@ Route::post('/propinas/calcular', [PropinasController::class, 'calcular'])->name
 
 Route::get('/contrasenas', [contrasenasController::class, 'index'])->name('contrasenas');
 Route::post('/contrasenas/calcular', [contrasenasController::class, 'calcular'])->name('contrasenas.calcular');
+
+// gastos punto 4
+
+Route::get('/gastos', [ExpenseController::class, 'index'])->name('expenses');
+Route::post('/gastos', [ExpenseController::class, 'store'])->name('expenses.store');
+Route::delete('/gastos/{id}', [ExpenseController::class, 'destroy'])->name('expenses.destroy');
+Route::get('/gastos/{id}/edit', [ExpenseController::class, 'edit'])->name('expenses.edit');
+Route::put('/gastos/{id}', [ExpenseController::class, 'update'])->name('expenses.update');
+Route::get('/gastos/create', [ExpenseController::class, 'create'])->name('expenses.create');
 
 // reservas punto 5
 
