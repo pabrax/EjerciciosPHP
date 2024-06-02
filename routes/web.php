@@ -9,6 +9,7 @@ use App\Http\Controllers\PropinasController;
 use App\Http\Controllers\contrasenasController;
 use App\Http\Controllers\NotasController;
 use App\Http\Controllers\CronometroController;
+use App\Http\Controllers\EventoController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\ReservasController;
 use App\Http\Controllers\HabitacionesController;
@@ -78,6 +79,15 @@ Route::get('/notas/{id}/edit', [NotasController::class, 'edit'])->name('notas.ed
 Route::put('/notas/{id}', [NotasController::class, 'update'])->name('notas.update');
 Route::get('/notas/create', [NotasController::class, 'create'])->name('notas.create');
 
-// punto 11 cronometro
+// calendario punto 7
+
+Route::get('/calendario', [EventoController::class, 'calendario'])->name('calendario');
+Route::get('/calendario/evento/create', [EventoController::class, 'create'])->name('eventos.create');
+Route::get('/calendario/evento/{id}/edit', [EventoController::class, 'edit'])->name('eventos.edit');
+Route::post('/calendario/evento', [EventoController::class, 'store'])->name('eventos.store');
+Route::put('/calendario/evento/{id}', [EventoController::class, 'update'])->name('eventos.update');
+Route::delete('/calendario/evento/{id}', [EventoController::class, 'destroy'])->name('eventos.destroy');
+
+// cronometro punto 11
 
 Route::get('/cronometro', [CronometroController::class, 'index'])->name('cronometro');
